@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install -g create-react-app@4.0.3
+  pre_build:
+    commands:
+      - cd my-react-app
+      - npm install
+  build:
+    commands:
+      - echo "Build phase"
+      - npm run build
+    finally:
+      - echo final block echo
+
+artifacts:
+  base-directory: my-react-app/build
+  files:
+    - '**/*'
